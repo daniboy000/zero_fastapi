@@ -7,3 +7,34 @@ requires-python = ">=3.11.4"
 dependencies = [
     "fastapi[standard]>=0.117.1",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.13.2",
+    "taskipy>=1.14.1",
+]
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+
+[tool.taskipy.tasks]
+format = 'ruff format'
+lint = 'ruff check'
+pre_format = 'ruff check --fix'
+pre_test = 'task lint'
+run = 'fastapi dev main.py'
+test = 'pytest -s -x --cov=. -vv'
