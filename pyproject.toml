@@ -21,7 +21,14 @@ line-length = 79
 
 [tool.ruff.lint]
 preview = true
-select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+select = [
+    'I',  # Import formatting
+    'F',  # Pyflakes
+    'E',  # Pycodestyle errors
+    'W',  # Pycodestyle warnings
+    'PL',  # Pylint
+    'PT'  # Pytest style violations
+]
 
 [tool.ruff.format]
 preview = true
@@ -32,9 +39,10 @@ pythonpath = "."
 addopts = '-p no:warnings'
 
 [tool.taskipy.tasks]
-format = 'ruff format'
 lint = 'ruff check'
 pre_format = 'ruff check --fix'
+format = 'ruff format'
+run = 'fastapi dev app/main.py'
 pre_test = 'task lint'
-run = 'fastapi dev main.py'
-test = 'pytest -s -x --cov=. -vv'
+test = 'pytest -s -x --cov=app -vv'
+post_test = 'coverage html'
