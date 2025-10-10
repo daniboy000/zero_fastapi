@@ -22,6 +22,6 @@ repos:
         types: [ python ]
       - id: pytest changed files
         name: Run pytest on changed files
-        entry: ./scripts/precommit_pytest.sh
+        entry: uv run pytest ./tests
         language: script
         types: [ python ]
