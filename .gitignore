@@ -11,3 +11,7 @@ wheels/
 
 # Test files
 .coverage
+
+# IDE files
+.vscode/
+.idea/

@@ -20,8 +20,8 @@ repos:
         entry: uv run ruff check --fix
         language: system
         types: [ python ]
-      - id: pytest changed files
-        name: Run pytest on changed files
+      - id: pytest
+        name: Run pytest via uv
         entry: uv run pytest ./tests
-        language: script
+        language: system
         types: [ python ]
