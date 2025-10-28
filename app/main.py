@@ -26,4 +26,4 @@ def create_user(user: UserSchema):
 
     database.append(user_with_id)
 
-    return user
+    return user_with_id

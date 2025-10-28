@@ -21,6 +21,7 @@ def test_create_user_happy_path(client):
     assert response.json() == {
         'username': 'alice',
         'email': 'alice@example.com',
+        'id': 1,
     }
 
 
@@ -32,6 +33,7 @@ def test_read_users(client):
             {
                 'username': 'alice',
                 'email': 'alice@example.com',
+                'id': 1,
             }
         ]
     }
